@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <script type="text/javascript">
+function doXMLHttpRequest() {
+  var xhr = new XMLHttpRequest(); 
+
+  xhr.onreadystatechange=function()  {
+   if (xhr.readyState==4) {
+     if(xhr.status == 200) {
+        processResponse(xhr.responseText);
+    } else {
+      responseArea.innerHTML="Error code " + xhr.status;
+    }
+   }
+  }
+  xhr.open("GET", "button.json", true); 
+  xhr.send(); 
+  } 
+
+function processResponse(responseJSON) {
+        var responseObject = JSON.parse(responseJSON);
+        var displayText = "Here are all of the types of things you can search for with EntertainMe"
+        for (var i = 0; i<responseObject.requests.length; i++) {
+                var t = responseObject.requests[i];
+                displayText += "<li>" + t.type + "<\/li>";
+                }
+        displayText += "<\/ol>";
+        document.getElementById("responseArea").innerHTML = displayText;
+        }
+  </script>
+  <title></title>
+</head>
+<body>
+  <form name="eg1" id="eg1">
+    <input type="button" value="Click For More Details" onclick="doXMLHttpRequest()">
+  </form>
+  <div id="responseArea"></div>
+</body>
+</html>
+
+  

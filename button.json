@@ -1,0 +1,8 @@
+{"requests": [
+    { "type":"Music"},
+    { "type":"Movies"},
+    { "type":"Shows"},
+    { "type":"Books"},
+    { "type":"Authors"},
+    { "type":"Games"}
+    ]}
